@@ -1,0 +1,17 @@
+<h1>All POSTS</h1>
+
+<% if user_signed_in? %>
+  form
+<% else %>
+  Please <%= link_to "login",  new_user_session_path %> to post something or comment
+
+<% end %>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <h2><%= post.title %></h2>
+      <p><%= post.text %></p>
+    </li>
+  <% end %>
+</ul>
