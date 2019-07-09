@@ -1,7 +1,13 @@
 <h1>All POSTS</h1>
 
 <% if user_signed_in? %>
-  form
+<%= simple_form_for @post, html: { class: 'form-inline' } do |f| %>
+raise inspect
+  <%= f.input :title %>
+  <%= f.input :text %>
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+<% end %>
 <% else %>
   Please <%= link_to "login",  new_user_session_path %> to post something or comment
 

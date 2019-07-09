@@ -11,3 +11,9 @@ Post.create(
   title: "Dance lessons",
   text: "Hi, my name is Olga and i will teach you how to dance!"
 )
+
+User.create(
+  name: "Svetka",
+  email: "privetmedved.grnv@gmail.com",
+  password: "kartoshka"
+)
