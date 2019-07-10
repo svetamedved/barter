@@ -1,23 +1,29 @@
-<h1>All POSTS</h1>
+<p id="notice"><%= notice %></p>
 
-<% if user_signed_in? %>
-<%= simple_form_for @post, html: { class: 'form-inline' } do |f| %>
-raise inspect
-  <%= f.input :title %>
-  <%= f.input :text %>
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
-<% end %>
-<% else %>
-  Please <%= link_to "login",  new_user_session_path %> to post something or comment
+<h1>Posts</h1>
 
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <h2><%= post.title %></h2>
-      <p><%= post.text %></p>
-    </li>
-  <% end %>
-</ul>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.text %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
